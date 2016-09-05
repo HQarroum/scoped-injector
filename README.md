@@ -1,4 +1,4 @@
-# Scoped dependency injector
+# Lighthouse
 
 An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
