@@ -1,10 +1,8 @@
 <br/><br/>
-<p align="center">
+<h1 align="center">
  <img width="450" src="lighthouse.png" />
-</p>
+</h1>
 <br/><br/>
-
-# Lighthouse
 
 An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
