@@ -1,3 +1,4 @@
+<br/><br/>
 <p align="center">
  <img width="450" src="lighthouse.png" />
 </p>
