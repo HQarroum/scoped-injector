@@ -9,7 +9,7 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 ## Install
 
 ```bash
-npm install --save scoped-injector
+npm install --save lighthouse
 ```
 
 ## Description
