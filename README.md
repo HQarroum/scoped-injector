@@ -1,4 +1,4 @@
-## Scoped dependency injector for Node.js
+# Scoped dependency injector
 
 An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
