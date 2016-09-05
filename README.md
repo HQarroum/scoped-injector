@@ -1,5 +1,5 @@
 <p align="center">
- <img width="400" src="lighthouse.png" />
+ <img width="450" src="lighthouse.png" />
 </p>
 <br/>
 
