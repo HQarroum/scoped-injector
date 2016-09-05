@@ -1,6 +1,7 @@
 <p align="center">
- <img width="380" src="lighthouse.png" />
+ <img width="400" src="lighthouse.png" />
 </p>
+<br/>
 
 # Lighthouse
 
