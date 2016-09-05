@@ -1,3 +1,7 @@
+<p align="center">
+ <img width="380" src="lighthouse.png" />
+</p>
+
 # Lighthouse
 
 An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
