@@ -1,4 +1,5 @@
 ## Scoped Injector
+[![Build Status](https://travis-ci.org/HQarroum/timed-cache.svg?branch=master)](https://travis-ci.org/HQarroum/scoped-injector) [![Code Climate](https://codeclimate.com/repos/55e34093e30ba072de0013d2/badges/acc2df5cc7f78c301ad9/gpa.svg)](https://codeclimate.com/repos/55e34093e30ba072de0013d2/feed)
 
 An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
