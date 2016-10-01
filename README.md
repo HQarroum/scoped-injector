@@ -1,21 +1,15 @@
-<br/><br/>
-<p align="center">
- <img width="450" src="lighthouse.png" />
-</p>
-<br/><br/>
-
-## Lighthouse
+## Scoped Injector
 
 An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
-Current version: **1.0.5**
+Current version: **1.0.0**
 
 Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
 ## Install
 
 ```bash
-npm install --save lighthouse
+npm install --save scoped-injector
 ```
 
 ## Description
