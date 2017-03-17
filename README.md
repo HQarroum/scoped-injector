@@ -8,7 +8,7 @@
 - [Installation](#installation)
 - [Description](#description)
 - [Proposal](#proposal)
-- [Initialization](#initialization)
+- [Usage](#usage)
 - [Plugins](#plugins)
 
 ## Installation
@@ -39,7 +39,7 @@ To solve this problem, I came up with the idea to centralize the structure of yo
 ```javascript
 const $      = require('scoped-injector');
 const auth   = $.middleware('oauth/authenticator');
-const mailer = $.plugins('express/mailer');
+const mailer = $.plugin('express/mailer');
 ```
 
 The main advantages I see to this approach are :
@@ -60,12 +60,105 @@ This method makes it possible to patch the `require` global identifier in order 
 
 ```javascript
 const auth   = require.middleware('oauth/authenticator');
-const mailer = require.plugins('express/mailer');
+const mailer = require.plugin('express/mailer');
 ```
 
 As always when monkey patching an existing object, this solution, even if its seems more natural in a Node.js sense, is dangerous as it modifies an existing object and its potential internal behaviour. Eventhough the Modules API in Node.js is *locked*, it is not advised to use this method and doing so can lead to undefined behaviour.
 
 So what is it good for, you might ask ? I use this method in a constrained environment (e.g writing temporary scripts, or small projects) which is controlled and not subject to change. Using this method makes the code clearer and avoids requiring an additional dependency at the top of each module.
+
+#### Using the global namespace
+
+Similarly, using the global namespace is bad practice in Javascript because of name collisions, however we make it possible for developers to import the scoped injector to the global namespace for conditions where they are in full control of the environment and they seek commodity.
+
+In these cases, one can import a module using the `$` prefix :
+
+```javascript
+const auth   = $middleware('oauth/authenticator');
+const mailer = $plugin('express/mailer');
+```
+
+This is the most convenient implementation of the scoped injector pattern, but also the most dangerous, so keep in mind to be particularly cautious when using it.
+
+## Usage
+
+### Project tree description
+
+When initializing your application and before using the `scoped-injector`, you must provision it with the layout of your module tree structure on the filesystem. To do so, create a configuration file (e.g in `config/project.tree.js`) describing the structure of your project, here is an example using `Express` :
+
+```javascript
+// bin/www
+
+/**
+ * Loading the dependency injector.
+ */
+ require('dependency-injector')(
+    require('../config/project.tree')
+ );
+```
+
+```javascript
+// config/project.tree.js
+
+/**
+ * A description of the different folders of
+ * the project tree we would like to export
+ * using the scoped injector.
+ */
+module.exports = {
+
+    project: {
+        base: __dirname + '/../'
+    },
+
+    tree: {
+        controller: {
+            path: 'controllers'
+        },
+
+        middleware: {
+            path: 'middlewares'
+        },
+
+        model: {
+            path: 'models'
+        },
+
+        route: {
+            path: 'routes'
+        },
+
+        service: {
+            path: 'services'
+        },
+
+        require: {
+            path: '/'
+        }
+    }
+};
+```
+
+The base directory of the project is defined in the `base` attribute of the `project` object, this defines the root directory to start looking for modules when you require one using the scoped injector.
+
+The `tree` object containes a collection of tokens you can use with the scoped injector to require a module located in its associated `path` on the filesystem. For example, by specifying the `controller` token with an associated path of `controllers`, you can require any modules in its associated path as follow :
+
+```javascript
+const $     = require('scoped-injector');
+const users = $.controller('users);
+```
+
+> Here, the specified `users` is in fact located in `${project-base-directory}/controllers/users.js`.
+
+### Options
+
+The scoped injector can take other options specifying the scope strategy which will be used by the injector to make itself available to the developer. There are three available strategies, each of them are described in the [Proposal](#proposal) section :
+
+ - scope-instance
+ - scope-require
+ - scope-global
+ 
+ > By default and when no options is passed at initialization time, the injector will use the `scope-instance` strategy.
 
 ## Plugins
 
