@@ -86,25 +86,17 @@ This is the most convenient implementation of the scoped injector pattern, but a
 
 When initializing your application and before using the `scoped-injector`, you must provision it with the layout of your module tree structure on the filesystem. To do so, create a configuration file (e.g in `config/project.tree.js`) describing the structure of your project, here is an example using `Express` :
 
-```javascript
-// bin/www
+The `bin/www` initialization module :
 
-/**
- * Loading the dependency injector.
- */
+```javascript
  require('dependency-injector')(
     require('../config/project.tree')
  );
 ```
 
-```javascript
-// config/project.tree.js
+The `config/project.tree.js` description module :
 
-/**
- * A description of the different folders of
- * the project tree we would like to export
- * using the scoped injector.
- */
+```javascript
 module.exports = {
 
     project: {
@@ -116,24 +108,12 @@ module.exports = {
             path: 'controllers'
         },
 
-        middleware: {
-            path: 'middlewares'
-        },
-
         model: {
             path: 'models'
         },
 
         route: {
             path: 'routes'
-        },
-
-        service: {
-            path: 'services'
-        },
-
-        require: {
-            path: '/'
         }
     }
 };
@@ -145,7 +125,7 @@ The `tree` object containes a collection of tokens you can use with the scoped i
 
 ```javascript
 const $     = require('scoped-injector');
-const users = $.controller('users);
+const users = $.controller('users');
 ```
 
 > Here, the specified `users` is in fact located in `${project-base-directory}/controllers/users.js`.
@@ -154,9 +134,9 @@ const users = $.controller('users);
 
 The scoped injector can take other options specifying the scope strategy which will be used by the injector to make itself available to the developer. There are three available strategies, each of them are described in the [Proposal](#proposal) section :
 
- - scope-instance
- - scope-require
- - scope-global
+ - [scope-instance](#proposal)
+ - [scope-require](#patching-the-require-object)
+ - [scope-global](#using-the-global-namespace)
  
  > By default and when no options is passed at initialization time, the injector will use the `scope-instance` strategy.
 
