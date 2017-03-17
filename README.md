@@ -89,7 +89,7 @@ When initializing your application and before using the `scoped-injector`, you m
 The `bin/www` initialization module :
 
 ```javascript
- require('dependency-injector')(
+ require('scoped-injector')(
     require('../config/project.tree')
  );
 ```
@@ -132,28 +132,33 @@ const users = $.controller('users');
 
 ### Options
 
-The scoped injector can take other options specifying the scope strategy which will be used by the injector to make itself available to the developer. There are three available strategies, each of them are described in the [Proposal](#proposal) section :
+The injector can take additional parameters to specify the scope strategy which will be used to make itself available to the developer. There are three available strategies, each of them are described in the [Proposal](#proposal) section :
 
  - [scope-instance](#proposal)
  - [scope-require](#patching-the-require-object)
  - [scope-global](#using-the-global-namespace)
  
- > By default and when no options is passed at initialization time, the injector will use the `scope-instance` strategy.
+ > By default, the injector will use the `scope-instance` strategy as it is the safest solution.
 
 You can pass an `options` object to the injector as its second argument at initialization time :
 
 ```javascript
- require('dependency-injector')(
-    require('../config/project.tree'),
-    {
-     strategy: {
-      name: 'scope-global',
-      parameters: {
-       prefix: '$'
-      }
+/**
+ * This cause the injector to export the tokens in
+ * your project tree in the global namespace and to
+ * prepend them with the `$` character :
+ * const users = $controller('users');
+ */
+require('scoped-injector')(
+   require('../config/project.tree'), {
+    strategy: {
+     name: 'scope-global',
+     parameters: {
+      prefix: '$'
      }
     }
- );
+   }
+);
 ```
 
 > Each strategy can take an optional `parameters` object as an input to customize its behaviour.
