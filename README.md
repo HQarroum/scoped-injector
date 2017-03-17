@@ -140,6 +140,24 @@ The scoped injector can take other options specifying the scope strategy which w
  
  > By default and when no options is passed at initialization time, the injector will use the `scope-instance` strategy.
 
+You can pass an `options` object to the injector as its second argument at initialization time :
+
+```javascript
+ require('dependency-injector')(
+    require('../config/project.tree'),
+    {
+     strategy: {
+      name: 'scope-global',
+      parameters: {
+       prefix: '$'
+      }
+     }
+    }
+ );
+```
+
+> Each strategy can take an optional `parameters` object as an input to customize its behaviour.
+
 ## Plugins
 
 This module comes with a plugin interface making it possible to add additional functionalities to the loader, which can then leverage the same scoped approach.
