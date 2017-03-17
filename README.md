@@ -128,7 +128,7 @@ const $     = require('scoped-injector');
 const users = $.controller('users');
 ```
 
-> Here, the specified `users` is in fact located in `${project-base-directory}/controllers/users.js`.
+> Here, the specified `users` module is in fact located in `${project-base-directory}/controllers/users.js` on the filesystem.
 
 ### Options
 
