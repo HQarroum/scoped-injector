@@ -1,3 +1,5 @@
+<br/><br/><p align="center"><img width="380" src="docs/images/icon.png" /></p><br/>
+
 # scoped-injector
 > An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
@@ -137,7 +139,7 @@ The injector can take additional parameters to specify the scope strategy which 
  - [scope-local](#proposal)
  - [scope-require](#patching-the-require-object)
  - [scope-global](#using-the-global-namespace)
- 
+
  > The injector will **always** use the `scope-local` strategy as it is the safest solution.
 
 You can pass an `options` object to the injector as its second argument at initialization time :
