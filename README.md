@@ -134,11 +134,11 @@ const users = $.controller('users');
 
 The injector can take additional parameters to specify the scope strategy which will be used to make itself available to the developer. There are three available strategies, each of them are described in the [Proposal](#proposal) section :
 
- - [scope-instance](#proposal)
+ - [scope-local](#proposal)
  - [scope-require](#patching-the-require-object)
  - [scope-global](#using-the-global-namespace)
  
- > By default, the injector will use the `scope-instance` strategy as it is the safest solution.
+ > The injector will **always** use the `scope-local` strategy as it is the safest solution.
 
 You can pass an `options` object to the injector as its second argument at initialization time :
 
