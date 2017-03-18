@@ -1,4 +1,4 @@
-<br/><br/><p align="center"><img width="380" src="docs/icon.png" /></p><br/>
+<br/><br/><p align="center"><img width="300" src="docs/icon.png" /></p><br/>
 
 # scoped-injector
 > An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
