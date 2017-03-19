@@ -1,4 +1,5 @@
-var should = require('should');
+const _      = require('lodash');
+const should = require('should');
 
 describe('The dependency injector', function () {
 
@@ -140,8 +141,7 @@ describe('The dependency injector', function () {
           test: {
             path: 'test'
           }
-        }
-      }, {
+        },
         strategy: {
           name: 'scope-global'
         }
@@ -167,8 +167,7 @@ describe('The dependency injector', function () {
           test: {
             path: 'test'
           }
-        }
-      }, {
+        },
         strategy: {
           name: 'scope-require',
           parameters: {
@@ -181,8 +180,8 @@ describe('The dependency injector', function () {
       should.exist(require.test('index'));
     })
 
-    it('should be able to get the absolute path of a module', function () {
-      require(__dirname + '/../lib/index.js')({
+    it('should be able to get the absolute path of a module using the local scope', function () {
+      const $ = require(__dirname + '/../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -196,32 +195,71 @@ describe('The dependency injector', function () {
         }
       });
 
-      should.exist($path.get('index'));
-      should.exist($path.lib('index'));
-      should.exist($path.test('index'));
+      // Testing using local scope.
+      (_.isString($.path.get('lib/index'))).should.be.true();
+      (_.isString($.path.lib('index'))).should.be.true();
+      (_.isString($.path.test('index'))).should.be.true();
+      // Testing using local scope.
+      (_.isString($.path.get('lib/index'))).should.be.true();
+      (_.isString($.path.lib('index'))).should.be.true();
+      (_.isString($.path.test('index'))).should.be.true();
     })
   })
 
-  it('should be able to get the content of a module', function () {
-    require(__dirname + '/../lib/index.js')({
-      project: {
-        base: __dirname + '/../'
-      },
-      tree: {
-        index: {
-          path: 'lib'
+  /**
+   * Testing whether injectors are correctly exported.
+   */
+  describe('plugins', function () {
+
+    it('should be able to get the absolute path of a module using the global scope', function () {
+      const $ = require(__dirname + '/../lib/index.js')({
+        project: {
+          base: __dirname + '/../'
+        },
+        tree: {
+          lib: {
+            path: 'lib'
+          },
+          test: {
+            path: 'test'
+          }
+        },
+        strategy: {
+          name: 'scope-global'
         }
-      }
-    });
+      });
 
-    $content.get('lib/index.js', function (err, content) {
-      should.not.exist(err);
-      should.exist(content);
-    });
+      // Testing using local scope.
+      (_.isString($.path.get('lib/index'))).should.be.true();
+      (_.isString($.path.lib('index'))).should.be.true();
+      (_.isString($.path.test('index'))).should.be.true();
+      // Testing using global scope.
+      (_.isString($path.get('lib/index'))).should.be.true();
+      (_.isString($path.lib('index'))).should.be.true();
+      (_.isString($path.test('index'))).should.be.true();
+    })
 
-    $content.index('index.js', function (err, content) {
-      should.not.exist(err);
-      should.exist(content);
-    });
+    it('should be able to get the content of a module using the local scope', function () {
+      const $ = require(__dirname + '/../lib/index.js')({
+        project: {
+          base: __dirname + '/../'
+        },
+        tree: {
+          lib: {
+            path: 'lib'
+          }
+        }
+      });
+
+      $content.get('lib/index.js', function (err, content) {
+        should.not.exist(err);
+        should.exist(content);
+      });
+
+      $content.lib('index.js', function (err, content) {
+        should.not.exist(err);
+        should.exist(content);
+      });
+    })
   })
 })
