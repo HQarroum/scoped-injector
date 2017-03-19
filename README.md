@@ -1,20 +1,9 @@
-<h1 align="center">
- <br/><p align="center"><img width="360" src="docs/icon.png" /></p><br />
-</h1>
+<br/><p align="center"><img width="360" src="docs/icon.png" /></p><br />
 
-<h4 align="center">An opiniated require wrapper used to inject scoped package dependencies in Node.js.</h4>
+# scoped-injector
+> An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
-<p align="center">
-  <a href="https://gitter.im/feross/webtorrent">
-    <img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg"
-         alt="Gitter">
-  </a>
-  <a href="https://travis-ci.org/feross/webtorrent">
-    <img src="https://img.shields.io/travis/feross/webtorrent/master.svg"
-         alt="Travis Build">
-  </a>
-</p>
-<br>
+[![Build Status](https://travis-ci.org/HQarroum/timed-cache.svg?branch=master)](https://travis-ci.org/HQarroum/scoped-injector) [![Code Climate](https://codeclimate.com/repos/55e34093e30ba072de0013d2/badges/acc2df5cc7f78c301ad9/gpa.svg)](https://codeclimate.com/repos/55e34093e30ba072de0013d2/feed)
 
 ## Table of contents
 
