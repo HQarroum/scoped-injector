@@ -181,3 +181,4 @@ This module comes with a plugin interface making it possible to add additional f
 
  - [Better local require() paths for Node.js](https://gist.github.com/branneman/8048520)
  - [Make the require in node.js to be always relative to the root folder of the project](https://stackoverflow.com/questions/10860244/how-to-make-the-require-in-node-js-to-be-always-relative-to-the-root-folder-of-t)
+ - [The Node Module object](https://nodejs.org/api/modules.html#modules_the_module_object)
