@@ -2,7 +2,7 @@
  <br/><p align="center"><img width="360" src="docs/icon.png" /></p><br />
 </h1>
 
-<h4 align="center">A general purpose micro-kernel written in C++11.</h4>
+<h4 align="center">A scoped require for your Node.js modules.</h4>
 
 <p align="center">
   <a href="https://gitter.im/feross/webtorrent">
