@@ -2,9 +2,9 @@
   "name": "scoped-injector",
   "version": "1.0.0",
   "description": "An opiniated require wrapper used to inject scoped package dependencies in Node.js.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,14 @@
     "require-patch": "0.0.5"
   },
   "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-mocha-test": "^0.13.2",
+    "jshint-stylish": "^2.2.1",
+    "load-grunt-tasks": "^3.5.2",
     "mocha": "^3.2.0",
-    "should": "^11.2.1"
+    "should": "^11.2.1",
+    "time-grunt": "^1.4.0"
   }
 }

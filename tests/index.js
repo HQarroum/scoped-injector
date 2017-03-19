@@ -15,7 +15,7 @@ describe('The dependency injector', function () {
      */
     it('should accept an empty configuration', function () {
       require(__dirname + '/../lib/index.js')();
-    })
+    });
 
     /**
      * Checking whether the module does not accept a
@@ -36,7 +36,7 @@ describe('The dependency injector', function () {
         return;
       }
       throw new Error('Failed');
-    })
+    });
 
     /**
      * Checking whether the module accepts a valid configuration.
@@ -52,7 +52,7 @@ describe('The dependency injector', function () {
           }
         }
       });
-    })
+    });
 
     /**
      * Some keys in the `tree` object are reserved, we check if the
@@ -76,9 +76,8 @@ describe('The dependency injector', function () {
       );
       } catch (e) { return; }
       throw new Error('Failed');
-   })
-
-  })
+   });
+  });
 
   /**
    * Testing whether injectors are correctly exported.
@@ -95,13 +94,13 @@ describe('The dependency injector', function () {
             path: 'lib'
           },
           test: {
-            path: 'test'
+            path: 'tests'
           }
         }
       });
       (typeof $.lib('index')).should.equal('function');
       should.exist($.test('index'));
-    })
+    });
 
     /**
      * Testing the default behaviour of the injector.
@@ -116,14 +115,14 @@ describe('The dependency injector', function () {
             path: 'lib'
           },
           test: {
-            path: 'test'
+            path: 'tests'
           }
         }
       });
 
       (global.$lib === undefined).should.be.true();
       (global.$test === undefined).should.be.true();
-    })
+    });
 
     /**
      * Testing export in the global namespace using the
@@ -139,7 +138,7 @@ describe('The dependency injector', function () {
             path: 'lib'
           },
           test: {
-            path: 'test'
+            path: 'tests'
           }
         },
         strategy: {
@@ -149,7 +148,7 @@ describe('The dependency injector', function () {
 
       should.exist($lib('index'));
       should.exist($test('index'));
-    })
+    });
 
     /**
      * Testing export in the require namespace using the
@@ -165,7 +164,7 @@ describe('The dependency injector', function () {
             path: 'lib'
           },
           test: {
-            path: 'test'
+            path: 'tests'
           }
         },
         strategy: {
@@ -178,7 +177,13 @@ describe('The dependency injector', function () {
 
       should.exist(require.lib('index'));
       should.exist(require.test('index'));
-    })
+    });
+  });
+
+  /**
+   * Testing whether injectors are correctly exported.
+   */
+  describe('plugins', function () {
 
     it('should be able to get the absolute path of a module using the local scope', function () {
       const $ = require(__dirname + '/../lib/index.js')({
@@ -190,7 +195,7 @@ describe('The dependency injector', function () {
             path: 'lib'
           },
           test: {
-            path: 'test'
+            path: 'tests'
           }
         }
       });
@@ -203,13 +208,7 @@ describe('The dependency injector', function () {
       (_.isString($.path.get('lib/index'))).should.be.true();
       (_.isString($.path.lib('index'))).should.be.true();
       (_.isString($.path.test('index'))).should.be.true();
-    })
-  })
-
-  /**
-   * Testing whether injectors are correctly exported.
-   */
-  describe('plugins', function () {
+    });
 
     it('should be able to get the absolute path of a module using the global scope', function () {
       const $ = require(__dirname + '/../lib/index.js')({
@@ -221,7 +220,7 @@ describe('The dependency injector', function () {
             path: 'lib'
           },
           test: {
-            path: 'test'
+            path: 'tests'
           }
         },
         strategy: {
@@ -237,7 +236,38 @@ describe('The dependency injector', function () {
       (_.isString($path.get('lib/index'))).should.be.true();
       (_.isString($path.lib('index'))).should.be.true();
       (_.isString($path.test('index'))).should.be.true();
-    })
+    });
+
+    it('should be able to get the absolute path of a module using the require scope', function () {
+      const $ = require(__dirname + '/../lib/index.js')({
+        project: {
+          base: __dirname + '/../'
+        },
+        tree: {
+          lib: {
+            path: 'lib'
+          },
+          test: {
+            path: 'tests'
+          }
+        },
+        strategy: {
+          name: 'scope-require',
+          parameters: {
+            require: require
+          }
+        }
+      });
+
+      // Testing using local scope.
+      (_.isString($.path.get('lib/index'))).should.be.true();
+      (_.isString($.path.lib('index'))).should.be.true();
+      (_.isString($.path.test('index'))).should.be.true();
+      // Testing using require scope.
+      (_.isString(require.path.get('lib/index'))).should.be.true();
+      (_.isString(require.path.lib('index'))).should.be.true();
+      (_.isString(require.path.test('index'))).should.be.true();
+    });
 
     it('should be able to get the content of a module using the local scope', function () {
       const $ = require(__dirname + '/../lib/index.js')({
@@ -260,6 +290,6 @@ describe('The dependency injector', function () {
         should.not.exist(err);
         should.exist(content);
       });
-    })
-  })
-})
+    });
+  });
+});
