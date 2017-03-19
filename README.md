@@ -61,7 +61,7 @@ Apart from requiring an instance of the scoped injector and using its method to 
 
 #### Augmenting the require object
 
-This method makes it possible to patch the `require` function in order to access scopes :
+This strategy makes it possible to patch the `require` function in order to access scopes :
 
 ```javascript
 const auth   = require.middleware('oauth/authenticator');
@@ -74,7 +74,7 @@ So what is it good for, you might ask ? I use this method in prototyping (e.g wh
 
 #### Interpolate require paths
 
-This method also overrides the `require` function to provide a way to inject scoped modules, it does modify modifies the function itself but intercepts the path you are passing to it to interpolate variables associated with project tree :
+This strategy also overrides the `require` function to provide a way to inject scoped modules, it does modify modifies the function itself but intercepts the path you are passing to it to interpolate variables associated with project tree :
 
 ```javascript
 const auth   = require('${middleware}/oauth/authenticator');
@@ -83,9 +83,11 @@ const mailer = require('${plugin}/express/mailer');
 
 This way we don't need to monkey patch the require function, and we only interact with the string you passes to it. Each variables you pass to require will be evaluated to the path associated with it.
 
+> Note however that this strategy does not currently support the use of [plugins](#plugins).
+
 #### Using the global namespace
 
-Similarly, using the global namespace is bad practice in Javascript mainly because of name collisions, however we make it possible for developers to import the scoped injector to the global namespace for conditions where they are in full control of the environment and seek convenience.
+Using the global namespace is bad practice in Javascript mainly because of name collisions, however we make it possible for developers to import the scoped injector to the global namespace for conditions where they are in full control of the environment and seek convenience.
 
 In these cases, one can import a module using the `$` prefix :
 
