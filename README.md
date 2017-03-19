@@ -2,7 +2,7 @@
  <br/><p align="center"><img width="360" src="docs/icon.png" /></p><br />
 </h1>
 
-<h4 align="center">A scoped require for your Node.js modules.</h4>
+<h4 align="center">An opiniated require wrapper used to inject scoped package dependencies in Node.js.</h4>
 
 <p align="center">
   <a href="https://gitter.im/feross/webtorrent">
@@ -13,25 +13,8 @@
     <img src="https://img.shields.io/travis/feross/webtorrent/master.svg"
          alt="Travis Build">
   </a>
-  <a href="https://ci.appveyor.com/project/feross/webtorrent">
-    <img src="https://ci.appveyor.com/api/projects/status/cgu85xlgl72uoswq/branch/master?svg=true"
-         alt="AppVeyor Build">
-  </a>
-  <a href="https://www.npmjs.com/package/webtorrent">
-    <img src="https://img.shields.io/npm/dm/webtorrent.svg"
-         alt="NPM Downloads">
-  </a>
-  <a href="https://www.npmjs.com/package/webtorrent">
-    <img src="https://img.shields.io/npm/v/webtorrent.svg"
-         alt="NPM Version">
-  </a>
 </p>
 <br>
-
-# scoped-injector
-> An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
-
-[![Build Status](https://travis-ci.org/HQarroum/timed-cache.svg?branch=master)](https://travis-ci.org/HQarroum/scoped-injector) [![Code Climate](https://codeclimate.com/repos/55e34093e30ba072de0013d2/badges/acc2df5cc7f78c301ad9/gpa.svg)](https://codeclimate.com/repos/55e34093e30ba072de0013d2/feed)
 
 ## Table of contents
 
