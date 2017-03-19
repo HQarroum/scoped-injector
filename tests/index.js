@@ -14,7 +14,7 @@ describe('The dependency injector', function () {
      * configuration.
      */
     it('should accept an empty configuration', function () {
-      require(__dirname + '/../lib/index.js')();
+      require('../lib/index.js')();
     });
 
     /**
@@ -24,14 +24,14 @@ describe('The dependency injector', function () {
     it('should not accept an invalid configuration', function () {
       // Testing with an invalid project path.
       try {
-        require(__dirname + '/../lib/index.js')({ foo: 'bar' });
+        require('../lib/index.js')({ foo: 'bar' });
       } catch (e) {
         return;
       }
 
       // Testing with an invalid `options` object.
       try {
-        require(__dirname + '/../lib/index.js')(undefined, { foo: 'bar' });
+        require('../lib/index.js')(undefined, { foo: 'bar' });
       } catch (e) {
         return;
       }
@@ -42,7 +42,7 @@ describe('The dependency injector', function () {
      * Checking whether the module accepts a valid configuration.
      */
     it('should accept a valid configuration object', function () {
-      require(__dirname + '/../lib/index.js')({
+      require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -60,7 +60,7 @@ describe('The dependency injector', function () {
      */
     it('should not accept forbidden values as keys', function () {
       try {
-        require(__dirname + '/../lib/index.js')({
+        require('../lib/index.js')({
           project: {
             base: __dirname + '/../'
           },
@@ -85,7 +85,7 @@ describe('The dependency injector', function () {
   describe('export process', function () {
 
     it('should be able to export the given paths into the returned local instance', function () {
-      const $ = require(__dirname + '/../lib/index.js')({
+      const $ = require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -106,7 +106,7 @@ describe('The dependency injector', function () {
      * Testing the default behaviour of the injector.
      */
     it('should not be able to export the given paths into the global namespace by default', function () {
-      require(__dirname + '/../lib/index.js')({
+      require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -129,7 +129,7 @@ describe('The dependency injector', function () {
      * `scope-global` strategy.
      */
     it('should be able to export the given paths into the global namespace', function () {
-      require(__dirname + '/../lib/index.js')({
+      require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -155,7 +155,7 @@ describe('The dependency injector', function () {
      * `scope-require` strategy.
      */
     it('should be able to export the given paths into the require namespace', function () {
-      require(__dirname + '/../lib/index.js')({
+      require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -186,7 +186,7 @@ describe('The dependency injector', function () {
   describe('plugins', function () {
 
     it('should be able to get the absolute path of a module using the local scope', function () {
-      const $ = require(__dirname + '/../lib/index.js')({
+      const $ = require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -211,7 +211,7 @@ describe('The dependency injector', function () {
     });
 
     it('should be able to get the absolute path of a module using the global scope', function () {
-      const $ = require(__dirname + '/../lib/index.js')({
+      const $ = require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -239,7 +239,7 @@ describe('The dependency injector', function () {
     });
 
     it('should be able to get the absolute path of a module using the require scope', function () {
-      const $ = require(__dirname + '/../lib/index.js')({
+      const $ = require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
@@ -270,7 +270,7 @@ describe('The dependency injector', function () {
     });
 
     it('should be able to get the content of a module using the local scope', function () {
-      const $ = require(__dirname + '/../lib/index.js')({
+      const $ = require('../lib/index.js')({
         project: {
           base: __dirname + '/../'
         },
