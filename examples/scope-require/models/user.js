@@ -10,6 +10,6 @@ class User {
   set name(name) {
     this._name = name;
   }
-};
+}
 
 module.exports = User;
