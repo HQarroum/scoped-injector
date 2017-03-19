@@ -1,4 +1,32 @@
-<br/><p align="center"><img width="360" src="docs/icon.png" /></p><br />
+<h1 align="center">
+ <br/><p align="center"><img width="360" src="docs/icon.png" /></p><br />
+</h1>
+
+<h4 align="center">A general purpose micro-kernel written in C++11.</h4>
+
+<p align="center">
+  <a href="https://gitter.im/feross/webtorrent">
+    <img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg"
+         alt="Gitter">
+  </a>
+  <a href="https://travis-ci.org/feross/webtorrent">
+    <img src="https://img.shields.io/travis/feross/webtorrent/master.svg"
+         alt="Travis Build">
+  </a>
+  <a href="https://ci.appveyor.com/project/feross/webtorrent">
+    <img src="https://ci.appveyor.com/api/projects/status/cgu85xlgl72uoswq/branch/master?svg=true"
+         alt="AppVeyor Build">
+  </a>
+  <a href="https://www.npmjs.com/package/webtorrent">
+    <img src="https://img.shields.io/npm/dm/webtorrent.svg"
+         alt="NPM Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/webtorrent">
+    <img src="https://img.shields.io/npm/v/webtorrent.svg"
+         alt="NPM Version">
+  </a>
+</p>
+<br>
 
 # scoped-injector
 > An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
