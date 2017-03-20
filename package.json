@@ -1,6 +1,6 @@
 {
   "name": "scoped-injector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An opiniated require wrapper used to inject scoped package dependencies in Node.js.",
   "main": "index.js",
   "scripts": {
