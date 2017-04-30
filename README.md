@@ -24,9 +24,9 @@ npm install --save scoped-injector
 
 ## Description
 
-When working on a project, I find it efficient to segment my modules in well-named directory to create proper namespaces and have a sense of logical, well-organized code base so that the structure of the project speaks by itself.
+When working on a project, I find it efficient to segment my modules in well-named directories to create proper namespaces and have a sense of logical, well-organized code base so that the structure of the project speaks by itself.
 
-This however causes sometimes the folder hierarchy on the filesystem to become quite deep, and causes the injection of module to become bloated. When you have many modules, and you need to require a bunch of them in one or many other modules, for instance using `Express`, I sometimes end up with the following statements in my code :
+This however causes sometimes the folder hierarchy on the filesystem to become quite deep, and causes the injection of module to become bloated. When you have many modules, and you need to require a bunch of them in one or many other modules, for instance using [Express](https://expressjs.com), I sometimes end up with the following statements in my code :
 
 ```javascript
 const auth   = require('../../../middlewares/oauth/authenticator');
@@ -57,7 +57,7 @@ The main advantages I see to this approach are :
 
 ### Variants
 
-Apart from requiring an instance of the scoped injector and using its method to inject scoped dependencies, this implementation allows other [strategies](#options) to inject scoped modules, each having its strength and flaws.
+Apart from requiring an instance of the scoped injector and using the methods it exposes to inject scoped dependencies, this implementation allows other [strategies](#options) to inject scoped modules, each having its strength and flaws.
 
 #### Augmenting the require object
 
@@ -68,20 +68,18 @@ const auth   = require.middleware('oauth/authenticator');
 const mailer = require.plugin('express/mailer');
 ```
 
-As always when monkey patching an existing object, this solution, even if its seems more natural in a Node.js sense, is dangerous as it modifies an existing object and its potential internal behaviour. Eventhough the [Module API](https://nodejs.org/api/modules.html#modules_modules) in Node.js is *stable*, it is not advised to use this method and doing so can lead to undefined behaviour.
+As always when monkey patching an existing object, this solution, even if its seems more natural in a Node.js sense, is dangerous as it modifies an existing object and its potential internal behaviour. Eventhough the [Module API](https://nodejs.org/api/modules.html#modules_modules) in Node.js is defined as *stable*, it is not advised to use this method and doing so can lead to undefined behaviour.
 
 So what is it good for, you might ask ? I use this method in prototyping (e.g when writing temporary scripts, or small projects) in a controlled environment which is not subject to change. Using this method makes the code clearer and avoids requiring an additional dependency at the top of each module.
 
 #### Interpolate require paths
 
-This strategy also overrides the `require` function to provide a way to inject scoped modules, it does modify modifies the function itself but intercepts the path you are passing to it to interpolate variables associated with project tree :
+This strategy also overrides the `require` function to provide a way to inject scoped modules. But instead of modifying the function's prototype, it creates a wrapper which intercepts the path you are passing to it, and interpolates the specified variables associated with your project tree :
 
 ```javascript
 const auth   = require('${middleware}/oauth/authenticator');
 const mailer = require('${plugin}/express/mailer');
 ```
-
-This way we don't need to monkey patch the require function, and we only interact with the string you passes to it. Each variables you pass to require will be evaluated to the path associated with it.
 
 > Note however that this strategy does not currently support the use of [plugins](#plugins).
 
@@ -102,7 +100,7 @@ This is the most convenient implementation of the scoped injector pattern, but a
 
 ### Project tree description
 
-When initializing your application and before using the `scoped-injector`, you must provision it with the layout of your project tree structure on the filesystem. To do so, create a configuration file (e.g in `config/project.tree.js`) describing the structure of your project, here is an example using `Express` :
+When initializing your application and before using the `scoped-injector`, you must provision it with the layout of your project tree structure on the filesystem. To do so, create a configuration file (e.g in `config/project.tree.js`) describing the structure of your project, here is an example using a sample project :
 
 The `bin/www` initialization module :
 
@@ -139,7 +137,7 @@ module.exports = {
 
 The base directory of the project is defined in the `base` attribute of the `project` object, it defines the root directory to start looking for modules when you require one using the scoped injector.
 
-The `tree` object containes a collection of identifiers you can use with the scoped injector to require a module located in its associated `path` on the filesystem. For example, by specifying the `controller` token with an associated path of `controllers`, you can require any modules in its associated path as follow :
+The `tree` object contains a collection of identifiers you can use with the scoped injector to require a module located in its associated `path` on the filesystem. For example, by specifying the `controller` token with an associated path of `controllers`, you can require any modules in its associated path as follow :
 
 ```javascript
 const $     = require('scoped-injector');
@@ -157,9 +155,9 @@ The injector can take additional parameters to specify the scope strategy which 
  - [scope-global](#using-the-global-namespace)
  - [require-interpolation](#interpolate-require-paths)
 
- > The injector will **always** use the `scope-local` strategy as it is the safest solution.
+ > The injector will **always** use the `scope-local` strategy, as it is the safest solution.
 
-You can pass options by specifying an `options` object to the injector in the project description at initialization time. Considering the previous example, you might want to use the `scope-global` strategy by doing the following :
+You can pass additional options by specifying an `options` object to the injector in the project description at initialization time. Considering the previous example, you can use the `scope-global` strategy by specifying the following project description :
 
 ```javascript
 module.exports = {
@@ -179,7 +177,7 @@ module.exports = {
 };
 ```
 
-This cause the injector to export the identifiers in your project tree in the global namespace and to prepend them with the `$` character as follow :
+This will cause the injector to export the identifiers in your project tree in the global namespace and to prepend them with the `$` character :
 
 ```javascript
 const users = $controller('users');
