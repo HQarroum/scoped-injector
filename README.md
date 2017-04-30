@@ -24,7 +24,7 @@ npm install --save scoped-injector
 
 ## Description
 
-When using Node.js (and other frameworks or languages than Javascript as well), I find it efficient to segment my modules in well-named directory to create proper namespaces and have a sense of logical, well-organized code base so that the structure of the project speaks by itself.
+When working on a project, I find it efficient to segment my modules in well-named directory to create proper namespaces and have a sense of logical, well-organized code base so that the structure of the project speaks by itself.
 
 This however causes sometimes the folder hierarchy on the filesystem to become quite deep, and causes the injection of module to become bloated. When you have many modules, and you need to require a bunch of them in one or many other modules, for instance using `Express`, I sometimes end up with the following statements in my code :
 
