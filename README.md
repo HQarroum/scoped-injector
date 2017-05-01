@@ -157,7 +157,7 @@ The injector can take additional parameters to specify the scope strategy which 
 
  > The injector will **always** use the `scope-local` strategy, as it is the safest solution.
 
-You can pass additional options by specifying an `options` object to the injector in the project description at initialization time. Considering the previous example, you can use the `scope-global` strategy by specifying the following project description :
+You can pass additional options to specify what strategy you would like to use by specifying a `strategy` object to the injector in the project description, at initialization time :
 
 ```javascript
 module.exports = {
@@ -177,7 +177,7 @@ module.exports = {
 };
 ```
 
-This will cause the injector to export the identifiers in your project tree in the global namespace and to prepend them with the `$` character :
+This will cause the injector to use the `scope-global` strategy, and the identifiers defined in your project tree to be exported in the global namespace, prepended with the `$` character :
 
 ```javascript
 const users = $controller('users');
@@ -187,7 +187,57 @@ const users = $controller('users');
 
 ## Plugins
 
-This module comes with a plugin interface making it possible to add additional functionalities to the loader, which can then leverage the same scoped approach.
+This module comes with a plugin interface making it possible to add additional functionalities to the loader, which can then leverage the same scoped approach. This documentation will describe the built-in plugins.
+
+### File Path Plugin
+
+Instead of loading a module and returning the exported object, as `require` would do it, this plugin will return the absolute path of a specified module on the filesystem.
+
+```js
+const $ = require('../lib/index.js')({
+  project: {
+    base: __dirname + '/../'
+  },
+  tree: {
+    controller: {
+      path: 'controllers'
+    }
+  }
+});
+
+// The following two methods are equivalent, and will in both
+// cases return the absolute path of the `users` module.
+$.path.get('controllers/users');
+$.path.controller('users');
+```
+
+### File Content Plugin
+
+This plugin will read and return the content of a specified module on the filesystem.
+
+```js
+const $ = require('../lib/index.js')({
+  project: {
+    base: __dirname + '/../'
+  },
+  tree: {
+    controller: {
+      path: 'controllers'
+    }
+  }
+});
+
+// The following two methods are equivalent, and will in both
+// cases return the content of the module file.
+$.content.get('controllers/users');
+$.content.controller('users');
+```
+
+> You can develop your own plugins, and place them into the `lib/modules` directory of this project. They will be automatically loaded at runtime.
+
+## Additional Examples
+
+The [examples](examples) directory contains various samples of code demonstrating how to use the scoped injector, the built-in strategies, and how to define and load your own strategy into the injector.
 
 ## See also
 
