@@ -1,7 +1,11 @@
 <h1 align="center">
 	<br>
 	<br>
+	<br>
+	<br>
 	<img width="600" src="https://github.com/HQarroum/scoped-injector/raw/master/docs/icon.png" alt="styleshift">
+	<br>
+	<br>
 	<br>
 	<br>
 </h1>
