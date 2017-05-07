@@ -1,6 +1,11 @@
-<br/><br/><br/><br/><br/><br/><p align="center"><img width="600" src="https://github.com/HQarroum/scoped-injector/raw/master/docs/icon.png" /></p><br/><br/><br/><br/><br/><br/>
+<h1 align="center">
+	<br>
+	<br>
+	<img width="600" src="https://github.com/HQarroum/scoped-injector/raw/master/docs/icon.png" alt="styleshift">
+	<br>
+	<br>
+</h1>
 
-# scoped-injector
 > An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
 [![Build Status](https://travis-ci.org/HQarroum/scoped-injector.svg?branch=master)](https://travis-ci.org/HQarroum/scoped-injector) [![Code Climate](https://codeclimate.com/repos/55e34093e30ba072de0013d2/badges/acc2df5cc7f78c301ad9/gpa.svg)](https://codeclimate.com/repos/55e34093e30ba072de0013d2/feed)
