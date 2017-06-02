@@ -18,6 +18,8 @@
 
 ## Table of contents
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/HQarroum/scoped-injector.svg)](https://greenkeeper.io/)
+
 - [Installation](#installation)
 - [Description](#description)
 - [Proposal](#proposal)
