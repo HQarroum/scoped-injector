@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/HQarroum/scoped-injector#readme",
   "dependencies": {
-    "joi": "^12.0.0",
+    "joi": "^13.0.2",
     "lodash": "^4.17.4",
     "require-patch": "0.0.5"
   },
