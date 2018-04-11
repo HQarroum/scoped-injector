@@ -14,7 +14,7 @@
 
 > An opiniated `require` wrapper used to inject scoped package dependencies in Node.js.
 
-[![Build Status](https://travis-ci.org/HQarroum/scoped-injector.svg?branch=master)](https://travis-ci.org/HQarroum/scoped-injector) [![Code Climate](https://codeclimate.com/repos/55e34093e30ba072de0013d2/badges/acc2df5cc7f78c301ad9/gpa.svg)](https://codeclimate.com/repos/55e34093e30ba072de0013d2/feed)
+[![Build Status](https://travis-ci.org/HQarroum/scoped-injector.svg?branch=master)](https://travis-ci.org/HQarroum/scoped-injector) [![codecov](https://codecov.io/gh/HQarroum/scoped-injector/branch/master/graph/badge.svg)](https://codecov.io/gh/HQarroum/scoped-injector)
 
 ## Table of contents
 
