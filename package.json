@@ -1,6 +1,6 @@
 {
   "name": "scoped-injector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An opiniated require wrapper used to inject scoped package dependencies in Node.js.",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,7 @@
   "homepage": "https://github.com/HQarroum/scoped-injector#readme",
   "dependencies": {
     "joi": "^13.0.2",
-    "lodash": "^4.17.4",
-    "require-patch": "0.0.5"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
